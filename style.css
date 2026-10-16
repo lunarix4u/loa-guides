@@ -97,3 +97,39 @@ body {
   color: #7c869a;
   border-top: 1px solid #2c3850;
 }
+
+.guide-content article {
+  background: #1a2230;
+  border: 1px solid #2c3850;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.guide-content article h3 {
+  margin-top: 0;
+  color: #7fb3ff;
+}
+
+.guide-content article h4 {
+  color: #c8d3e8;
+  margin-bottom: 6px;
+}
+
+.guide-content .warning {
+  background: #2a1f22;
+  border: 1px solid #7a3b45;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.guide-content .warning h2 {
+  color: #ff8a97;
+}
+
+.guide-content .intro {
+  background: #171d29;
+  border: 1px solid #2c3850;
+  border-radius: 12px;
+  padding: 20px;
+}
