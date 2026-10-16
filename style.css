@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #10141c;
+  color: #e8eaf0;
+  line-height: 1.6;
+}
+
+.site-header {
+  background: #171d29;
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom: 2px solid #3b4a68;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 36px;
+  color: #7fb3ff;
+}
+
+.site-header p {
+  margin: 8px 0 0;
+  color: #aab4c8;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+}
+
+.raid-list h2 {
+  color: #7fb3ff;
+}
+
+.raid-card {
+  display: block;
+  background: #1a2230;
+  border: 1px solid #2c3850;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.raid-card:hover {
+  border-color: #7fb3ff;
+  transform: translateY(-2px);
+}
+
+.raid-card h3 {
+  margin: 0 0 6px;
+  color: #ffffff;
+}
+
+.raid-card p {
+  margin: 0;
+  color: #aab4c8;
+}
+
+.guide-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+  margin: 16px auto;
+}
+
+.guide-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: #1a2230;
+}
+
+.guide-content th,
+.guide-content td {
+  border: 1px solid #2c3850;
+  padding: 10px;
+  text-align: left;
+}
+
+.guide-content th {
+  background: #232d40;
+  color: #7fb3ff;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  color: #7c869a;
+  border-top: 1px solid #2c3850;
+}
