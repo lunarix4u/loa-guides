@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" type="button">☀️ Светлая тема</button>
   <header class="site-header">
     <h1>Бельгардин — Фаза 1</h1>
     <p>
@@ -179,5 +180,28 @@
   <footer class="site-footer">
     <p>Гайд составлен игроком. Lost Ark — товарный знак его правообладателей.</p>
   </footer>
+  <script>
+  const toggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    toggle.textContent = '🌙 Тёмная тема';
+  }
+
+  toggle.addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+    if (isLight) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'dark');
+      toggle.textContent = '☀️ Светлая тема';
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      toggle.textContent = '🌙 Тёмная тема';
+    }
+  });
+</script>
 </body>
 </html>
