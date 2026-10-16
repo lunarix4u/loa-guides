@@ -1,14 +1,22 @@
+/* Палитра всего сайта */
 :root {
-  color-scheme: dark;
-  --bg: #0b0e14;
-  --panel: #131924;
-  --panel-2: #18202e;
-  --line: #263043;
-  --text: #e6e9f0;
-  --muted: #9aa5b8;
-  --accent: #f2c14e;
-  --accent-2: #6ea8fe;
-  --danger: #ff6b7a;
+  color-scheme: light;
+
+  --bg: #eee9e1;
+  --paper: #fffdf9;
+  --panel: #f6f1e9;
+  --line: #ded3c5;
+
+  --text: #40372f;
+  --muted: #77695d;
+  --heading: #4d3528;
+  --accent: #79563e;
+  --link: #765039;
+
+  --warning-bg: #f6ecdc;
+  --warning-line: #c7a57b;
+
+  --shadow: 0 5px 20px rgba(69, 49, 33, 0.05);
 }
 
 * {
@@ -17,174 +25,289 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 24px;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(110, 168, 254, 0.10), transparent 45%),
-    radial-gradient(circle at 85% 10%, rgba(242, 193, 78, 0.08), transparent 40%),
-    var(--bg);
+
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(
+      rgba(90, 68, 48, 0.045) 0.7px,
+      transparent 0.7px
+    );
+  background-size: 6px 6px;
+
   color: var(--text);
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.65;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+
+  overflow-wrap: break-word;
 }
 
+/* Выделение текста мышкой */
+::selection {
+  background: #e2cdb5;
+  color: #35271f;
+}
+
+/* Ссылки */
 a {
-  color: var(--accent-2);
-  text-decoration: none;
+  color: var(--link);
+  text-decoration-color: #c7ae94;
+  text-underline-offset: 4px;
 }
 
 a:hover {
+  color: #442b1c;
   text-decoration: underline;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #987658;
+  outline-offset: 4px;
+}
+
+/* Верхняя часть страницы */
 .site-header {
   position: relative;
-  padding: 70px 20px 55px;
+  padding: 64px 24px 48px;
   text-align: center;
+
   background:
-    linear-gradient(180deg, rgba(11, 14, 20, 0) 0%, rgba(11, 14, 20, 0.92) 100%),
-    linear-gradient(90deg, #101725, #161f2e 50%, #101725);
-  border-bottom: 1px solid var(--line);
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(255, 253, 247, 0.95),
+      transparent 75%
+    ),
+    linear-gradient(
+      135deg,
+      #e5d9ca,
+      #f5eee4 50%,
+      #ded0be
+    );
+
+  border-top: 5px solid #74513a;
+  border-bottom: 1px solid #cdbda9;
 }
 
 .site-header::after {
   content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -1px;
-  width: min(680px, 85%);
-  height: 2px;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  display: block;
+
+  width: 64px;
+  height: 3px;
+  margin: 24px auto 0;
+
+  background: #a38668;
 }
 
 .site-header h1 {
   margin: 0;
-  font-size: clamp(30px, 6vw, 52px);
-  letter-spacing: 1px;
-  color: #fff;
-  text-shadow: 0 0 22px rgba(242, 193, 78, 0.25);
+  color: var(--heading);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+
+  text-shadow: none;
 }
 
 .site-header p {
-  margin: 10px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 15px;
 }
 
+/* Перекрывает старый синий цвет в HTML */
 .site-header a {
-  color: var(--accent);
+  color: var(--accent) !important;
+  text-decoration: none;
 }
 
+.site-header a:hover {
+  text-decoration: underline;
+}
+
+/* Основная область */
 .container {
-  width: min(1080px, calc(100% - 36px));
+  width: min(1040px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 40px 0 70px;
+  padding: 36px 0 64px;
+}
+
+/* Заголовки */
+h2,
+h3,
+h4 {
+  color: var(--heading);
+  line-height: 1.35;
 }
 
 h2 {
-  margin: 42px 0 18px;
-  padding-bottom: 10px;
+  margin: 0 0 20px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--line);
-  color: #fff;
-  font-size: 27px;
+
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
 }
 
 h3 {
-  margin: 28px 0 12px;
-  color: var(--accent);
-  font-size: 22px;
+  margin: 26px 0 12px;
+  font-size: 21px;
 }
 
 h4 {
-  margin: 18px 0 8px;
-  color: var(--accent-2);
+  margin: 24px 0 10px;
+  color: var(--accent);
+  font-size: 17px;
 }
 
 p {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
-ul {
-  margin: 0 0 16px;
-  padding-left: 22px;
+ul,
+ol {
+  margin: 0 0 18px;
+  padding-left: 24px;
 }
 
 li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.intro,
-.warning,
-.credits,
-.guide-content article {
-  background: linear-gradient(180deg, var(--panel-2), var(--panel));
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 24px;
-  margin: 24px 0;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+li::marker {
+  color: #967458;
 }
 
-.intro h2,
-.warning h2,
-.credits h2 {
-  margin-top: 0;
-  border-bottom: none;
+strong {
+  color: var(--heading);
 }
 
-.warning {
-  border-color: rgba(255, 107, 122, 0.45);
-  background: linear-gradient(180deg, #221820, #191219);
-}
-
-.warning h2 {
-  color: var(--danger);
-}
-
-.credits {
+em {
   color: var(--muted);
 }
 
+/* Светлые блоки гайда */
+.guide-content > section {
+  min-width: 0;
+  margin: 0 0 24px;
+  padding: 28px;
+
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+
+  box-shadow: var(--shadow);
+}
+
+.guide-content > section > :last-child {
+  margin-bottom: 0;
+}
+
+/* Вступление */
+.guide-content .intro {
+  border-top: 4px solid #a48668;
+}
+
+.intro h3 {
+  color: var(--accent);
+}
+
+/* Важная информация */
+.guide-content .warning {
+  background: var(--warning-bg);
+  border-color: var(--warning-line);
+  border-left: 4px solid #a88050;
+}
+
+.warning h2 {
+  color: #67472d;
+  border-bottom-color: #dfcbb0;
+}
+
+/* Отдельные механики */
+.guide-content article {
+  margin: 24px 0 0;
+  padding: 24px;
+
+  background: #faf7f1;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+
+  box-shadow: none;
+}
+
+.guide-content article h3 {
+  margin: -24px -24px 22px;
+  padding: 16px 24px;
+
+  background: #eae0d3;
+  color: var(--heading);
+
+  border-bottom: 1px solid #d6c5b1;
+  border-radius: 3px 3px 0 0;
+
+  font-size: 22px;
+}
+
+.guide-content article > :last-child {
+  margin-bottom: 0;
+}
+
+/* Главная страница */
 .raid-list {
   display: grid;
   gap: 18px;
 }
 
-.raid-card {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(180deg, var(--panel-2), var(--panel));
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 24px;
-  color: inherit;
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+.raid-list > h2 {
+  margin-bottom: 4px;
 }
 
-.raid-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  opacity: 0.75;
+/* Карточки рейдов и фаз */
+.raid-card {
+  position: relative;
+  display: block;
+  margin: 0 0 16px;
+  padding: 24px 28px;
+
+  background: var(--paper);
+  color: var(--text);
+
+  border: 1px solid var(--line);
+  border-left: 4px solid #a48668;
+  border-radius: 5px;
+
+  text-decoration: none;
+  box-shadow: var(--shadow);
+
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.raid-list .raid-card {
+  margin-bottom: 0;
 }
 
 .raid-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(242, 193, 78, 0.55);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+  background: #faf4ea;
+  border-color: #b89a7d;
   text-decoration: none;
 }
 
 .raid-card h3 {
   margin: 0 0 8px;
-  color: #fff;
+  color: var(--heading);
   font-size: 24px;
 }
 
@@ -193,86 +316,160 @@ li {
   color: var(--muted);
 }
 
+/* Таблицы: на узком экране прокручиваются */
 .guide-content table {
+  display: block;
   width: 100%;
-  margin: 18px 0 26px;
+  max-width: 100%;
+  overflow-x: auto;
+
+  margin: 20px 0 24px;
   border-collapse: collapse;
-  background: var(--panel);
+
+  background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
-  font-size: 15px;
+
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .guide-content th,
 .guide-content td {
-  padding: 12px 14px;
+  padding: 13px 16px;
+
   border-bottom: 1px solid var(--line);
+  border-right: 1px solid #e8dfd3;
+
   text-align: left;
   vertical-align: top;
 }
 
 .guide-content th {
-  background: #1d2635;
-  color: var(--accent);
+  background: #eae0d3;
+  color: var(--heading);
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.guide-content td {
+  font-variant-numeric: tabular-nums;
+}
+
+.guide-content tbody tr:nth-child(even) td {
+  background: #f8f4ed;
 }
 
 .guide-content tr:last-child td {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
-.guide-content img {
+.guide-content th:last-child,
+.guide-content td:last-child {
+  border-right: 0;
+}
+
+/* Картинки и гифки */
+.guide-content img,
+.guide-content video {
   display: block;
-  width: 100%;
-  max-width: 900px;
-  margin: 18px auto;
+
+  width: auto;
+  max-width: 100%;
+  height: auto;
+
+  margin: 22px auto;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 4px;
+
+  background: #e9e0d5;
 }
 
-.guide-content article h3 {
-  margin-top: 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--line);
+/* Подписи к изображениям */
+figure {
+  margin: 24px 0;
 }
 
-.guide-content article h4 {
-  margin-top: 20px;
-}
-
-.site-footer {
-  padding: 28px 20px;
-  text-align: center;
+figcaption {
+  margin-top: 10px;
   color: var(--muted);
-  border-top: 1px solid var(--line);
-  background: #0d111a;
   font-size: 14px;
+  text-align: center;
 }
 
+/* Контакты автора */
+.guide-content .credits {
+  background: #f1ebe2;
+  color: var(--muted);
+}
+
+/* Подвал */
+.site-footer {
+  padding: 26px 20px;
+
+  background: #e6ddd1;
+  color: #6c5b4c;
+
+  border-top: 1px solid #cfc0ae;
+  text-align: center;
+
+  font-size: 13px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* Телефоны */
 @media (max-width: 640px) {
+  body {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
   .site-header {
-    padding: 48px 16px 40px;
+    padding: 42px 18px 32px;
   }
 
   .container {
-    width: calc(100% - 28px);
-    padding-top: 28px;
+    width: calc(100% - 24px);
+    padding: 22px 0 40px;
   }
 
-  .intro,
-  .warning,
-  .credits,
+  .guide-content > section {
+    padding: 20px 16px;
+    margin-bottom: 18px;
+  }
+
   .guide-content article {
-    padding: 18px;
+    padding: 18px 16px;
   }
 
-  .guide-content table {
-    font-size: 13px;
+  .guide-content article h3 {
+    margin: -18px -16px 18px;
+    padding: 14px 16px;
+    font-size: 20px;
+  }
+
+  .raid-card {
+    padding: 20px;
   }
 
   .guide-content th,
   .guide-content td {
-    padding: 9px 8px;
+    padding: 10px 12px;
+  }
+}
+
+/* Отключение плавного движения по настройке браузера */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
   }
 }
