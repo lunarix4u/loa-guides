@@ -1,22 +1,23 @@
-/* Палитра всего сайта */
+/* LOA ARCHIVE — единый стиль сайта */
+
 :root {
   color-scheme: light;
 
-  --bg: #eee9e1;
-  --paper: #fffdf9;
-  --panel: #f6f1e9;
-  --line: #ded3c5;
+  --bg: #d9d0bd;
+  --paper: #e9e1ce;
+  --paper-light: #f1eadb;
+  --panel: #e2d8c3;
 
-  --text: #40372f;
-  --muted: #77695d;
-  --heading: #4d3528;
-  --accent: #79563e;
-  --link: #765039;
+  --ink: #302b23;
+  --muted: #6c6253;
+  --line: #b7aa92;
 
-  --warning-bg: #f6ecdc;
-  --warning-line: #c7a57b;
+  --sidebar: #22231e;
+  --sidebar-text: #e5dcc7;
+  --sidebar-muted: #b7ae99;
 
-  --shadow: 0 5px 20px rgba(69, 49, 33, 0.05);
+  --accent: #655037;
+  --sidebar-width: 232px;
 }
 
 * {
@@ -31,143 +32,36 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  padding-left: var(--sidebar-width);
 
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(
-      rgba(90, 68, 48, 0.045) 0.7px,
-      transparent 0.7px
-    );
-  background-size: 6px 6px;
+  background: var(--bg);
+  color: var(--ink);
 
-  color: var(--text);
   font-family: "Segoe UI", Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.75;
 
   overflow-wrap: break-word;
 }
 
-/* Выделение текста мышкой */
 ::selection {
-  background: #e2cdb5;
-  color: #35271f;
+  background: #c8b58f;
+  color: #211d17;
 }
 
-/* Ссылки */
 a {
-  color: var(--link);
-  text-decoration-color: #c7ae94;
+  color: #65482e;
   text-underline-offset: 4px;
 }
 
 a:hover {
-  color: #442b1c;
-  text-decoration: underline;
+  color: #342416;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid #987658;
+  outline: 3px solid #9c7950;
   outline-offset: 4px;
-}
-
-/* Верхняя часть страницы */
-.site-header {
-  position: relative;
-  padding: 64px 24px 48px;
-  text-align: center;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      rgba(255, 253, 247, 0.95),
-      transparent 75%
-    ),
-    linear-gradient(
-      135deg,
-      #e5d9ca,
-      #f5eee4 50%,
-      #ded0be
-    );
-
-  border-top: 5px solid #74513a;
-  border-bottom: 1px solid #cdbda9;
-}
-
-.site-header::after {
-  content: "";
-  display: block;
-
-  width: 64px;
-  height: 3px;
-  margin: 24px auto 0;
-
-  background: #a38668;
-}
-
-.site-header h1 {
-  margin: 0;
-  color: var(--heading);
-
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(32px, 5vw, 54px);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-
-  text-shadow: none;
-}
-
-.site-header p {
-  margin: 16px 0 0;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-/* Перекрывает старый синий цвет в HTML */
-.site-header a {
-  color: var(--accent) !important;
-  text-decoration: none;
-}
-
-.site-header a:hover {
-  text-decoration: underline;
-}
-
-/* Основная область */
-.container {
-  width: min(1040px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 36px 0 64px;
-}
-
-/* Заголовки */
-h2,
-h3,
-h4 {
-  color: var(--heading);
-  line-height: 1.35;
-}
-
-h2 {
-  margin: 0 0 20px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-
-  font-size: clamp(22px, 3vw, 28px);
-  font-weight: 700;
-}
-
-h3 {
-  margin: 26px 0 12px;
-  font-size: 21px;
-}
-
-h4 {
-  margin: 24px 0 10px;
-  color: var(--accent);
-  font-size: 17px;
 }
 
 p {
@@ -181,118 +75,308 @@ ol {
 }
 
 li {
-  margin-bottom: 10px;
-}
-
-li::marker {
-  color: #967458;
+  margin-bottom: 8px;
 }
 
 strong {
-  color: var(--heading);
+  color: #30271c;
 }
 
 em {
   color: var(--muted);
 }
 
-/* Светлые блоки гайда */
+/* Левая панель */
+
+.archive-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+
+  width: var(--sidebar-width);
+  padding: 24px 16px 16px;
+  overflow-y: auto;
+
+  background: var(--sidebar);
+  color: var(--sidebar-text);
+
+  border-right: 1px solid #0e100d;
+}
+
+.archive-brand {
+  display: block;
+  padding-bottom: 20px;
+
+  color: var(--sidebar-text);
+  border-bottom: 1px solid #555345;
+
+  text-decoration: none;
+}
+
+.archive-brand:hover {
+  color: #fff7e5;
+  text-decoration: none;
+}
+
+.archive-brand-title {
+  display: block;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.archive-brand-subtitle {
+  display: block;
+  margin-top: 8px;
+
+  color: var(--sidebar-muted);
+
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.archive-label {
+  margin: 26px 8px 10px;
+
+  color: var(--sidebar-muted);
+
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.archive-nav {
+  display: grid;
+  gap: 5px;
+}
+
+.archive-nav a {
+  display: block;
+  padding: 9px 11px;
+
+  color: var(--sidebar-text);
+  border: 1px solid transparent;
+
+  font-size: 14px;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.archive-nav a:hover,
+.archive-nav a[aria-current="page"] {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: #c2b69e;
+}
+
+.archive-nav--mechanics a {
+  color: #d0c5ae;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+}
+
+.archive-sidebar-footer {
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.archive-status {
+  margin: 0;
+  padding: 12px 8px;
+
+  color: var(--sidebar-muted);
+  border-top: 1px solid #555345;
+
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* Заголовок страницы */
+
+.site-header {
+  position: relative;
+  padding: 34px 40px 30px;
+
+  background: var(--paper);
+  border-top: 5px solid var(--sidebar);
+  border-bottom: 1px solid var(--line);
+
+  text-align: left;
+}
+
+.site-header::before {
+  content: "LOST ARK / RAID ARCHIVE";
+  display: block;
+  margin-bottom: 14px;
+
+  color: var(--muted);
+
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.site-header h1 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.site-header p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.site-header a {
+  color: var(--accent) !important;
+}
+
+/* Основная область */
+
+.container {
+  width: min(1120px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 28px 0 52px;
+  min-width: 0;
+}
+
+h2,
+h3,
+h4 {
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+h2 {
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid var(--line);
+
+  font-size: 23px;
+}
+
+h3 {
+  margin: 26px 0 12px;
+  font-size: 21px;
+}
+
+h4 {
+  margin: 22px 0 10px;
+  color: var(--accent);
+  font-size: 17px;
+}
+
+/* Секции гайда */
+
 .guide-content > section {
   min-width: 0;
-  margin: 0 0 24px;
-  padding: 28px;
+  margin-bottom: 22px;
+  padding: 24px;
 
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 5px;
+  border-radius: 2px;
 
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 0 rgba(70, 54, 34, 0.05);
 }
 
 .guide-content > section > :last-child {
   margin-bottom: 0;
 }
 
-/* Вступление */
 .guide-content .intro {
-  border-top: 4px solid #a48668;
+  border-top: 4px solid #766044;
 }
 
-.intro h3 {
-  color: var(--accent);
-}
-
-/* Важная информация */
 .guide-content .warning {
-  background: var(--warning-bg);
-  border-color: var(--warning-line);
-  border-left: 4px solid #a88050;
+  background: #e5d7bc;
+  border-left: 4px solid #85623d;
 }
 
 .warning h2 {
-  color: #67472d;
-  border-bottom-color: #dfcbb0;
+  color: #604329;
 }
 
-/* Отдельные механики */
+.guide-content .credits {
+  background: #ddd3be;
+  color: #5f5547;
+}
+
+/* Карточки механик */
+
 .guide-content article {
-  margin: 24px 0 0;
-  padding: 24px;
+  margin-top: 24px;
+  padding: 22px;
 
-  background: #faf7f1;
+  background: var(--paper-light);
   border: 1px solid var(--line);
-  border-radius: 4px;
-
-  box-shadow: none;
+  border-radius: 2px;
 }
 
 .guide-content article h3 {
-  margin: -24px -24px 22px;
-  padding: 16px 24px;
+  margin: -22px -22px 20px;
+  padding: 14px 22px;
 
-  background: #eae0d3;
-  color: var(--heading);
+  background: #d9cdb6;
+  border-bottom: 1px solid var(--line);
 
-  border-bottom: 1px solid #d6c5b1;
-  border-radius: 3px 3px 0 0;
-
-  font-size: 22px;
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  letter-spacing: -0.5px;
 }
 
 .guide-content article > :last-child {
   margin-bottom: 0;
 }
 
-/* Главная страница */
+/* Главная и выбор фазы */
+
 .raid-list {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
 .raid-list > h2 {
-  margin-bottom: 4px;
+  grid-column: 1 / -1;
+  margin-bottom: 0;
 }
 
-/* Карточки рейдов и фаз */
 .raid-card {
-  position: relative;
   display: block;
-  margin: 0 0 16px;
-  padding: 24px 28px;
+  min-width: 0;
+  margin-bottom: 16px;
+  padding: 24px;
 
   background: var(--paper);
-  color: var(--text);
+  color: var(--ink);
 
   border: 1px solid var(--line);
-  border-left: 4px solid #a48668;
-  border-radius: 5px;
+  border-top: 4px solid #766044;
+  border-radius: 2px;
 
   text-decoration: none;
-  box-shadow: var(--shadow);
 
   transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease;
+    background-color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .raid-list .raid-card {
@@ -300,34 +384,36 @@ em {
 }
 
 .raid-card:hover {
-  background: #faf4ea;
-  border-color: #b89a7d;
+  background: var(--paper-light);
+  border-color: #806c50;
   text-decoration: none;
 }
 
 .raid-card h3 {
-  margin: 0 0 8px;
-  color: var(--heading);
-  font-size: 24px;
+  margin: 0 0 10px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
 }
 
 .raid-card p {
   margin: 0;
   color: var(--muted);
+  font-size: 14px;
 }
 
-/* Таблицы: на узком экране прокручиваются */
+/* Таблицы */
+
 .guide-content table {
   display: block;
   width: 100%;
   max-width: 100%;
+  margin: 20px 0 24px;
   overflow-x: auto;
 
-  margin: 20px 0 24px;
   border-collapse: collapse;
-
-  background: var(--paper);
   border: 1px solid var(--line);
+  background: var(--paper-light);
 
   font-size: 14px;
   line-height: 1.6;
@@ -335,19 +421,17 @@ em {
 
 .guide-content th,
 .guide-content td {
-  padding: 13px 16px;
+  padding: 12px 14px;
 
   border-bottom: 1px solid var(--line);
-  border-right: 1px solid #e8dfd3;
+  border-right: 1px solid #cec1aa;
 
   text-align: left;
   vertical-align: top;
 }
 
 .guide-content th {
-  background: #eae0d3;
-  color: var(--heading);
-  font-weight: 700;
+  background: #d9cdb6;
   white-space: nowrap;
 }
 
@@ -355,8 +439,8 @@ em {
   font-variant-numeric: tabular-nums;
 }
 
-.guide-content tbody tr:nth-child(even) td {
-  background: #f8f4ed;
+.guide-content tr:nth-child(even) td {
+  background: #e8dfcd;
 }
 
 .guide-content tr:last-child td {
@@ -368,23 +452,22 @@ em {
   border-right: 0;
 }
 
-/* Картинки и гифки */
+/* Медиа */
+
 .guide-content img,
 .guide-content video {
   display: block;
-
   width: auto;
   max-width: 100%;
   height: auto;
 
   margin: 22px auto;
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  border: 1px solid #a99b82;
+  border-radius: 2px;
 
-  background: #e9e0d5;
+  background: #d6cbb6;
 }
 
-/* Подписи к изображениям */
 figure {
   margin: 24px 0;
 }
@@ -392,52 +475,92 @@ figure {
 figcaption {
   margin-top: 10px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
   text-align: center;
-}
-
-/* Контакты автора */
-.guide-content .credits {
-  background: #f1ebe2;
-  color: var(--muted);
 }
 
 /* Подвал */
+
 .site-footer {
-  padding: 26px 20px;
+  padding: 18px 28px;
 
-  background: #e6ddd1;
-  color: #6c5b4c;
+  background: var(--sidebar);
+  color: #cec4af;
+  border-top: 1px solid #11130e;
 
-  border-top: 1px solid #cfc0ae;
-  text-align: center;
-
-  font-size: 13px;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  text-align: left;
 }
 
 .site-footer p {
   margin: 0;
 }
 
-/* Телефоны */
-@media (max-width: 640px) {
+/* Телефоны и небольшие планшеты */
+
+@media (max-width: 900px) {
   body {
-    font-size: 15px;
-    line-height: 1.75;
+    padding-left: 0;
+  }
+
+  .archive-sidebar {
+    position: static;
+    width: 100%;
+    padding: 18px;
+    overflow: visible;
+    border-right: 0;
+    border-bottom: 1px solid #11130e;
+  }
+
+  .archive-brand {
+    padding-bottom: 14px;
+  }
+
+  .archive-brand-title {
+    font-size: 25px;
+  }
+
+  .archive-label {
+    margin: 16px 0 8px;
+  }
+
+  .archive-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .archive-nav a {
+    padding: 8px 10px;
+    border-color: #555345;
+  }
+
+  .archive-sidebar-footer {
+    display: none;
   }
 
   .site-header {
-    padding: 42px 18px 32px;
+    padding: 26px 22px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
   }
 
   .container {
     width: calc(100% - 24px);
-    padding: 22px 0 40px;
+    padding-top: 18px;
+  }
+
+  .raid-list {
+    grid-template-columns: 1fr;
   }
 
   .guide-content > section {
     padding: 20px 16px;
-    margin-bottom: 18px;
   }
 
   .guide-content article {
@@ -446,21 +569,16 @@ figcaption {
 
   .guide-content article h3 {
     margin: -18px -16px 18px;
-    padding: 14px 16px;
-    font-size: 20px;
-  }
-
-  .raid-card {
-    padding: 20px;
+    padding: 13px 16px;
+    font-size: 18px;
   }
 
   .guide-content th,
   .guide-content td {
-    padding: 10px 12px;
+    padding: 10px;
   }
 }
 
-/* Отключение плавного движения по настройке браузера */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
